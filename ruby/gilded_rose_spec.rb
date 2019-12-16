@@ -58,7 +58,6 @@ describe GildedRose do
       end
 
       describe "Aged Brie" do
-
         
         it "increases the quality of Aged Brie if the quality is less than 50" do
           items = [
@@ -69,6 +68,21 @@ describe GildedRose do
           
           expect(items[0].quality).to eq 46
         end
+
+      end
+
+      describe "Sulfuras" do
+
+        it "its quality never changes" do
+          items = [
+            Item.new("Sulfuras, Hand of Ragnaros", 10, 45)
+          ]
+
+          GildedRose.new(items).update_quality()
+          
+          expect(items[0].quality).to eq 45
+        end
+
       end
 
     end
