@@ -4,6 +4,12 @@ require_relative './gilded_rose.rb'
 
 =begin
 
+check out using constants in tests
+note the problem with sulfuras
+
+look up ruby freeze
+
+
 "Aged Brie"
 "Backstage passes to a TAFKAL80ETC concert"
 "Sulfuras, Hand of Ragnaros"
@@ -75,13 +81,23 @@ describe GildedRose do
 
         it "its quality never changes" do
           items = [
-            Item.new("Sulfuras, Hand of Ragnaros", 10, 45)
+            Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
           ]
 
           GildedRose.new(items).update_quality()
           
-          expect(items[0].quality).to eq 45
+          expect(items[0].quality).to eq 80
         end
+
+        # Phase 2 refactor for later: 
+        #it "always has a quality 80" do 
+        #  items = [
+        #    Item.new("Sulfuras, Hand of Ragnaros", 10, 45)
+        #  ]
+
+        #  
+        #  expect { GildedRose.new(items).update_quality() }.to raise(Error)
+        #end
 
       end
 
