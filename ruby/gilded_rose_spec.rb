@@ -116,6 +116,22 @@ describe GildedRose do
 
     end
 
+    context "Backstage passes" do
+      
+      it "does not increase the quality of a backstage pass beyond 50" do
+        items = [
+          Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 50), 
+          Item.new("Backstage passes to a TAFKAL80ETC concert", 3, 49)
+        ]
+
+        GildedRose.new(items).update_quality()
+        
+        expect(items[0].quality).to eq 50
+        expect(items[1].quality).to eq 50
+      end
+
+    end
+
     context "Sulfuras" do
 
       it "does not change the quality of Sulfuras" do
