@@ -41,17 +41,9 @@ describe GildedRose do
       expect(items[0].name).to eq "fixme"
     end
 
-    context "for a non-specialized item" do 
+    context "for any item" do
 
-      it "lowers the quality by 1 if it has not expired" do 
-        items = [Item.new("Ordinary Item", 10, 5)]
-        
-        GildedRose.new(items).update_quality()
-
-        expect(items[0].quality).to eq 4
-      end
-
-      xit "does not lower the quality below 0" do
+      it "does not lower the quality below 0" do
         items = [
           Item.new("Ordinary Item 1", 10, 0), 
           Item.new("Ordinary Item 2", -10, 0)
@@ -63,7 +55,19 @@ describe GildedRose do
         expect(items[1].quality).to eq 0
       end
 
-      describe "Aged Brie" do
+    end
+  
+    context "for a non-specialized item" do 
+
+      it "lowers the quality by 1 if it has not expired" do 
+        items = [Item.new("Ordinary Item", 10, 5)]
+        
+        GildedRose.new(items).update_quality()
+
+        expect(items[0].quality).to eq 4
+      end
+
+      context "for Aged Brie" do
         
         it "increases the quality of Aged Brie if the quality is less than 50" do
           items = [
@@ -77,7 +81,7 @@ describe GildedRose do
 
       end
 
-      describe "Sulfuras" do
+      context "Sulfuras" do
 
         it "its quality never changes" do
           items = [
@@ -88,16 +92,6 @@ describe GildedRose do
           
           expect(items[0].quality).to eq 80
         end
-
-        # Phase 2 refactor for later: 
-        #it "always has a quality 80" do 
-        #  items = [
-        #    Item.new("Sulfuras, Hand of Ragnaros", 10, 45)
-        #  ]
-
-        #  
-        #  expect { GildedRose.new(items).update_quality() }.to raise(Error)
-        #end
 
       end
 
