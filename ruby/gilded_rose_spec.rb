@@ -60,15 +60,30 @@ describe GildedRose do
     context "for a non-specialized item" do 
 
       it "lowers the quality by 1 if it has not expired" do 
-        items = [Item.new("Ordinary Item", 10, 5)]
+        items = [
+          Item.new("Ordinary Item 1", 10, 5)
+        ]
         
         GildedRose.new(items).update_quality()
 
         expect(items[0].quality).to eq 4
       end
 
+      it "lowers the quality by 2 if it has expired" do
+        items = [
+          Item.new("Ordinary Item", -10, 5)
+        ]
+        
+        GildedRose.new(items).update_quality()
+
+        expect(items[0].quality).to eq 3
+
+      end
+
       it "lowers the sell_in date by 1" do
-        items = [Item.new("Ordinary Item", 10, 5)]
+        items = [
+          Item.new("Ordinary Item", 10, 5)
+        ]
         
         GildedRose.new(items).update_quality()
 
