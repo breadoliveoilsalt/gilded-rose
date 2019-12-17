@@ -1,35 +1,5 @@
 require_relative '../gilded_rose.rb'
 
-=begin
-xxxx
-check out using constants in tests
-note the problem with sulfuras
-
-look up ruby freeze
-
-
-"Aged Brie"
-"Backstage passes to a TAFKAL80ETC concert"
-"Sulfuras, Hand of Ragnaros"
-"Conjured"
-"Anything else"
-
-
-{ name: "Something",
-  sell_in: int,
-  quality: int
-}
-
-Both sell_in and quality reduce each day 
-But this just seems to update quality
-
-Cap quality at 50.  Except Sulfuras, which is 80 and never alters.
-Floor quality at 0.
-
-Quality degrades by -1 each day typically, but -2 if sell_in is < 0
-Conjured items degrade twice as fast (by -2, then by -4)
-=end
-
 describe GildedRose do
 
   describe "#update_quality" do
