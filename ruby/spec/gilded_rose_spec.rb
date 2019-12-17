@@ -31,7 +31,7 @@ describe GildedRose do
     context "for a non-specialized item" do 
 
       it "lowers the quality by 1 if it has not expired" do 
-        item = Item.new("Ordinary Item 1", 10, 5)
+        item = Item.new("Ordinary Item", 10, 5)
         items = [item]
         
         GildedRose.new(items).update_quality()
@@ -103,7 +103,7 @@ describe GildedRose do
 
     end
 
-    context "Backstage passes" do
+    context "for Backstage passes" do
       
       it "does not increase the quality of a backstage pass beyond 50" do
         item_1 = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 50)
@@ -171,7 +171,7 @@ describe GildedRose do
 
     end
 
-    context "Sulfuras" do
+    context "for Sulfuras" do
 
       it "does not change the quality of Sulfuras" do
         item = Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
@@ -193,7 +193,7 @@ describe GildedRose do
 
     end
 
-    context "Conjured" do
+    context "for Conjured items" do
 
       it "lowers the quality by 2 if it has not expired" do 
         item = Item.new("Conjured Item", 10, 5)
@@ -205,7 +205,7 @@ describe GildedRose do
       end
 
       it "lowers the quality by 4 if it has expired" do
-        item = Item.new("Ordinary Item", -10, 5)
+        item = Item.new("Conjured Item", -10, 5)
         items = [item]
         
         GildedRose.new(items).update_quality()
