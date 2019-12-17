@@ -1,2 +1,3 @@
+--default-path ruby/spec 
 --colour
 --format documentation
