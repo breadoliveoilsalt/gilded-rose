@@ -1,4 +1,4 @@
-https://travis-ci.com/breadoliveoilsalt/gilded-rose.svg?branch=191216ruby
+[![Build Status](https://travis-ci.com/breadoliveoilsalt/gilded-rose.svg?branch=191216ruby)](https://travis-ci.com/breadoliveoilsalt/gilded-rose)
 
 # Gilded Rose in Ruby 
 
