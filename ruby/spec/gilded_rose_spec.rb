@@ -197,36 +197,36 @@ describe GildedRose do
 
     end
 
-#    context "for Conjured items" do
-#
-#      it "lowers the quality by 2 if it has not expired" do 
-#        item = Item.new("Conjured Item", 10, 5)
-#        items = [item]
-#        
-#        GildedRose.new(items).update_quality()
-#
-#        expect(item.quality).to eq 3
-#      end
-#
-#      it "lowers the quality by 4 if it has expired" do
-#        item = Item.new("Conjured Item", -10, 5)
-#        items = [item]
-#        
-#        GildedRose.new(items).update_quality()
-#
-#        expect(item.quality).to eq 1
-#      end
-#
-#      it "lowers the sell_in date by 1" do
-#        item = Item.new("Ordinary Item", 10, 5)
-#        items = [item]
-#        
-#        GildedRose.new(items).update_quality()
-#
-#        expect(item.sell_in).to eq 9
-#      end
-#
-#    end
+    context "for Conjured items" do
+
+      it "lowers the quality by 2 if it has not expired" do 
+        item = Item.new("Conjured Item", 10, 5)
+        items = [item]
+        
+        GildedRose.new(items).update_quality()
+
+        expect(item.quality).to eq 3
+      end
+
+      it "lowers the quality by 4 if it has expired" do
+        item = Item.new("Conjured Item", -10, 5)
+        items = [item]
+        
+        GildedRose.new(items).update_quality()
+
+        expect(item.quality).to eq 1
+      end
+
+      it "lowers the sell_in date by 1" do
+        item = Item.new("Ordinary Item", 10, 5)
+        items = [item]
+        
+        GildedRose.new(items).update_quality()
+
+        expect(item.sell_in).to eq 9
+      end
+
+    end
   
   end
 
