@@ -103,13 +103,24 @@ describe GildedRose do
         expect(item_2.quality).to eq 50
       end
 
-      it "increases the quality of Aged Brie if the quality is less than 50" do
-        item = Item.new("Aged Brie", 10, 45)
+      it "increases the quality of Aged Brie by 1 if the sell_in date is greater than 0" do
+        item = Item.new("Aged Brie", 1, 45)
         items =[item]
 
         GildedRose.new(items).update_quality()
         
         expect(item.quality).to eq 46
+      end
+      
+      it "increases the quality of Aged Brie by 2 if the sell_in date is 0 or less" do
+        item_1 = Item.new("Aged Brie", 0, 0)
+        item_2 = Item.new("Aged Brie", -1, 0)
+        items =[item_1, item_2]
+
+        GildedRose.new(items).update_quality()
+        
+        expect(item_1.quality).to eq 2
+        expect(item_2.quality).to eq 2
       end
       
       it "lowers the sell_in date by 1" do
@@ -176,6 +187,17 @@ describe GildedRose do
         GildedRose.new(items).update_quality()
         
         expect(item.sell_in).to eq 9
+      end
+
+      it "lowers the quality to 0 if the sell_in date is 0 or less" do
+        item_1 = Item.new("Backstage passes to a TAFKAL80ETC concert", 0, 45)
+        item_2 = Item.new("Backstage passes to a TAFKAL80ETC concert", -1, 45)
+        items = [item_1, item_2]
+
+        GildedRose.new(items).update_quality()
+        
+        expect(item_1.quality).to eq 0
+        expect(item_2.quality).to eq 0
       end
 
     end
