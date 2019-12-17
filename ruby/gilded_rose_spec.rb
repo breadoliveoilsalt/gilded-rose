@@ -39,23 +39,23 @@ describe GildedRose do
     context "for any item" do
 
       it "does not change the name" do
-        items = [Item.new("fixme", 0, 0)]
+        item = Item.new("fixme", 0, 0)
+        items = [item]
         
         GildedRose.new(items).update_quality()
 
-        expect(items[0].name).to eq "fixme"
+        expect(item.name).to eq "fixme"
       end
       
       it "does not lower the quality below 0" do
-        items = [
-          Item.new("Ordinary Item 1", 10, 0), 
-          Item.new("Ordinary Item 2", -10, 0)
-        ]
+        item_1 = Item.new("Ordinary Item 1", 10, 0)
+        item_2 = Item.new("Ordinary Item 2", -10, 0)
+        items = [item_1, item_2]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].quality).to eq 0
-        expect(items[1].quality).to eq 0
+        expect(item_1.quality).to eq 0
+        expect(item_2.quality).to eq 0
       end
 
     end
@@ -63,34 +63,31 @@ describe GildedRose do
     context "for a non-specialized item" do 
 
       it "lowers the quality by 1 if it has not expired" do 
-        items = [
-          Item.new("Ordinary Item 1", 10, 5)
-        ]
+        item = Item.new("Ordinary Item 1", 10, 5)
+        items = [item]
         
         GildedRose.new(items).update_quality()
 
-        expect(items[0].quality).to eq 4
+        expect(item.quality).to eq 4
       end
 
       it "lowers the quality by 2 if it has expired" do
-        items = [
-          Item.new("Ordinary Item", -10, 5)
-        ]
+        item = Item.new("Ordinary Item", -10, 5)
+        items = [item]
         
         GildedRose.new(items).update_quality()
 
-        expect(items[0].quality).to eq 3
+        expect(item.quality).to eq 3
 
       end
 
       it "lowers the sell_in date by 1" do
-        items = [
-          Item.new("Ordinary Item", 10, 5)
-        ]
+        item = Item.new("Ordinary Item", 10, 5)
+        items = [item]
         
         GildedRose.new(items).update_quality()
 
-        expect(items[0].sell_in).to eq 9
+        expect(item.sell_in).to eq 9
       end
 
     end
@@ -104,28 +101,26 @@ describe GildedRose do
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].quality).to eq 50
-        expect(items[1].quality).to eq 50
+        expect(item_1.quality).to eq 50
+        expect(item_2.quality).to eq 50
       end
 
       it "increases the quality of Aged Brie if the quality is less than 50" do
-        items = [
-          Item.new("Aged Brie", 10, 45)
-        ]
+        item = Item.new("Aged Brie", 10, 45)
+        items =[item]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].quality).to eq 46
+        expect(item.quality).to eq 46
       end
       
       it "lowers the sell_in date by 1" do
-        items = [
-          Item.new("Aged Brie", 10, 45)
-        ]
+        item = Item.new("Aged Brie", 10, 45)
+        items = [item]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].sell_in).to eq 9
+        expect(item.sell_in).to eq 9
       end
 
     end
@@ -133,15 +128,14 @@ describe GildedRose do
     context "Backstage passes" do
       
       it "does not increase the quality of a backstage pass beyond 50" do
-        items = [
-          Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 50), 
-          Item.new("Backstage passes to a TAFKAL80ETC concert", 3, 49)
-        ]
+        item_1 = Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 50)
+        item_2 = Item.new("Backstage passes to a TAFKAL80ETC concert", 3, 49)
+        items = [item_1, item_2]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].quality).to eq 50
-        expect(items[1].quality).to eq 50
+        expect(item_1.quality).to eq 50
+        expect(item_2.quality).to eq 50
       end
 
       it "increases the quality of 1 if the sell_in date is greater than 10" do
@@ -182,23 +176,21 @@ describe GildedRose do
     context "Sulfuras" do
 
       it "does not change the quality of Sulfuras" do
-        items = [
-          Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
-        ]
+        item = Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
+        items = [item]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].quality).to eq 80
+        expect(item.quality).to eq 80
       end
 
       it "does not lower the sell_in date for Sulfuras" do
-        items = [
-          Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
-        ]
+        item = Item.new("Sulfuras, Hand of Ragnaros", 10, 80)
+        items = [item]
 
         GildedRose.new(items).update_quality()
         
-        expect(items[0].sell_in).to eq 10
+        expect(item.sell_in).to eq 10
       end
     end
   
