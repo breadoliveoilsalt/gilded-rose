@@ -35,6 +35,16 @@ class GildedRose
         next
       end
 
+      if item.name == "Conjured Item"
+        if item.sell_in > 0
+          item.quality = [0, item.quality - 2].max
+        else
+          item.quality = [0, item.quality - 4].max
+        end
+        item.sell_in = item.sell_in - 1
+        next
+      end
+
       if item.sell_in > 0
         item.quality = [0, item.quality - 1].max
       else
