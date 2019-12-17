@@ -1,9 +1,7 @@
-# require File.join(File.dirname(__FILE__), 'gilded_rose')
-require_relative './gilded_rose.rb'
-
+require_relative '../gilded_rose.rb'
 
 =begin
-
+xxxx
 check out using constants in tests
 note the problem with sulfuras
 
