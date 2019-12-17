@@ -1,3 +1,15 @@
+https://travis-ci.com/breadoliveoilsalt/gilded-rose.svg?branch=191216ruby
+
+# Gilded Rose in Ruby 
+
+To run tests:
+
+1) From the root directory, run `bundle install`.
+
+2) From the root directory, run `rspec` or `rake spec`.
+
+# Instructions for the Gilded Rose
+
 Taken from: https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/master/GildedRoseRequirements.txt
 
 ======================================
