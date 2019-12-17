@@ -97,6 +97,17 @@ describe GildedRose do
 
     context "for Aged Brie" do
       
+      it "does not increase the quality of Aged Brie beyond 50" do
+        item_1 = Item.new("Aged Brie", 10, 50)
+        item_2 = Item.new("Aged Brie", 10, 49) 
+        items = [item_1, item_2]
+
+        GildedRose.new(items).update_quality()
+        
+        expect(items[0].quality).to eq 50
+        expect(items[1].quality).to eq 50
+      end
+
       it "increases the quality of Aged Brie if the quality is less than 50" do
         items = [
           Item.new("Aged Brie", 10, 45)
