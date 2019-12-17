@@ -155,6 +155,17 @@ describe GildedRose do
         expect(item_2.quality).to eq 2
       end
 
+      it "increases the quality by 3 if the sell_in date is from 1 to 5" do
+        item_1 = Item.new("Backstage passes to a TAFKAL80ETC concert", 1, 0)
+        item_2 = Item.new("Backstage passes to a TAFKAL80ETC concert", 5, 0)
+        items = [item_1, item_2]
+
+        GildedRose.new(items).update_quality()
+        
+        expect(item_1.quality).to eq 3
+        expect(item_2.quality).to eq 3
+      end
+
     end
 
     context "Sulfuras" do
